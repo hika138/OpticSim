@@ -1,10 +1,10 @@
 import os
+import PIL
+import PIL.GifImagePlugin
 import matplotlib.pyplot as plt
 import matplotlib.animation as animation
 import numpy as np
 import math
-import random
-import time as tm
 
 class Space:
     def __init__(self, wall:np.ndarray, reflactive_index:np.ndarray) -> None:
@@ -142,7 +142,7 @@ def make_gif(filename: str):
         print(format(i/time*100, ".2f") + "%")
     del im, i
     print("100.00%")
-    print("rendaring...")
+    print("rendering...")
     ani = animation.ArtistAnimation(fig, ims, interval=100)
     ani.save(filename="./wave/"+filename, writer="pillow")
     print("complete")
@@ -160,12 +160,12 @@ def make_gif_abs(filename: str):
         print(format(i/time*100, ".2f") + "%")
     del im, i
     print("100.00%")
-    print("rendaring...")
+    print("rendering...")
     ani = animation.ArtistAnimation(fig, ims, interval=100)
     ani.save(filename="./wave_abs/"+filename, writer="pillow")
     print("complete")
     del ims, ani
-    
+
 # coolwarmとgrayの両方を表示(メモリを特に多く使うので注意)
 def make_gif_both(filename: str):
     global fig, ax
@@ -179,11 +179,11 @@ def make_gif_both(filename: str):
         print(format(i/time*100, ".2f") + "%")
     del im1, im2, i
     print("100.00%")
-    print("rendaring...")
+    print("rendering...")
     ani = animation.ArtistAnimation(fig, ims, interval=100)
     ani.save(filename=filename, writer="pillow")
     print("complete")
     del ims, ani
-    
+
 if __name__=="__main__":
     main()
