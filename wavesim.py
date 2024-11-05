@@ -26,7 +26,7 @@ class WaveClass:
     # 波数
     @property
     def wavenumber(self) -> float:
-        return 1 / self.wavelegth
+        return 2 * math.pi / self.wavelegth
     
     # 周波数
     @property
@@ -113,7 +113,7 @@ wave.waves[1][1][size//2] = wave.amplitude*math.sin(wave.wavenumber*size//2*dx -
 
 # メイン関数
 def main():
-    make_gif("wave.gif")
+    make_gif_abs("wave_abs.gif")
 
 
 # リアルタイムで正負を考慮した強度分布を表示
@@ -140,6 +140,7 @@ def make_gif(filename: str):
         ims.append([im])
         wave.update(space=space)
         print(format(i/time*100, ".2f") + "%")
+    del im, i
     print("100.00%")
     print("rendaring...")
     ani = animation.ArtistAnimation(fig, ims, interval=100)
@@ -157,6 +158,7 @@ def make_gif_abs(filename: str):
         ims.append([im])
         wave.update(space=space)
         print(format(i/time*100, ".2f") + "%")
+    del im, i
     print("100.00%")
     print("rendaring...")
     ani = animation.ArtistAnimation(fig, ims, interval=100)
@@ -175,6 +177,7 @@ def make_gif_both(filename: str):
         ims.append([im1, im2])
         wave.update(space=space)
         print(format(i/time*100, ".2f") + "%")
+    del im1, im2, i
     print("100.00%")
     print("rendaring...")
     ani = animation.ArtistAnimation(fig, ims, interval=100)
