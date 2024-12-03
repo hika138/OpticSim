@@ -1,4 +1,6 @@
 import os
+import PIL
+import PIL.GifImagePlugin
 import matplotlib.pyplot as plt
 import matplotlib.animation as animation
 import numpy as np
@@ -141,8 +143,9 @@ def make_gif(filename: str):
         ims.append([im])
         wave.update(space=space)
         print(format(i/time*100, ".2f") + "%")
+    del im, i
     print("100.00%")
-    print("rendaring...")
+    print("rendering...")
     ani = animation.ArtistAnimation(fig, ims, interval=100)
     ani.save(filename=filename, writer="pillow")
     print("complete")
@@ -158,13 +161,14 @@ def make_gif_abs(filename: str):
         ims.append([im])
         wave.update(space=space)
         print(format(i/time*100, ".2f") + "%")
+    del im, i
     print("100.00%")
-    print("rendaring...")
+    print("rendering...")
     ani = animation.ArtistAnimation(fig, ims, interval=100)
     ani.save(filename=filename, writer="pillow")
     print("complete")
     del ims, ani
-    
+
 # coolwarmとgrayの両方を表示(メモリを特に多く使うので注意)
 def make_gif_both(filename: str):
     global fig, ax
@@ -176,12 +180,13 @@ def make_gif_both(filename: str):
         ims.append([im1, im2])
         wave.update(space=space)
         print(format(i/time*100, ".2f") + "%")
+    del im1, im2, i
     print("100.00%")
-    print("rendaring...")
+    print("rendering...")
     ani = animation.ArtistAnimation(fig, ims, interval=100)
     ani.save(filename=filename, writer="pillow")
     print("complete")
     del ims, ani
-    
+
 if __name__=="__main__":
     main()
